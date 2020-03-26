@@ -40,6 +40,32 @@ int consecutive(int m, int n)
 	return small;
 }
 
+int mid_school(int m, int n)
+{
+    int large;
+    large = m > n ? m : n;
+    int a = 0, b = 0, result = 1;
+    for(int i = 2; i <= large; i++)
+    {
+        a = 0;
+        b = 0;
+        if (m % i == 0)
+        {
+            a = 1;
+            m = m / i;
+        }
+        if (n % i == 0)
+        {
+            b = 1;
+            n = n / i;
+        }
+        if (a == 1 && b == 1)
+            result*=i;
+        if (a == 1 || b == 1)
+            i--;
+    }
+    return result;
+}
 int main()
 {
 	cout<<"Enter the two numbers";
@@ -48,5 +74,6 @@ int main()
 	cout<<euclid(a,b)<<endl;
 	cout<<rep(a,b)<<endl;
 	cout<<consecutive(a,b)<<endl;
+	cout <<mid_school(a, b)<<endl;
 	return 0;
 }
